@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CineLogin - Principal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>CineLogin</h1>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Cartelera</a>
+      <a href="#">Estrenos</a>
+      <a href="#">Mi cuenta</a>
+    </nav>
+    <!-- Mensaje de bienvenida -->
+    <p id="bienvenida" style="margin-top:10px; font-weight:bold;"></p>
+  </header>
+
+  <section class="hero">
+    <h2>Bienvenido a tu mundo de películas</h2>
+    <p>Presiona una película y te llevará a otro sitio para verla</p>
+  </section>
+
+  <section class="movies" id="movies-container"></section>
+
+  <footer>
+    © 2026 CineLogin - Tu portal de películas
+  </footer>
+
+  <script>
+    // Mostrar nombre de usuario si existe en sessionStorage
+    const usuario = sessionStorage.getItem('usuario');
+    const bienvenida = document.getElementById('bienvenida');
+
+    if (usuario) {
+      bienvenida.textContent = `¡Bienvenido, ${usuario}! 🎬😺`;
+    } else {
+      // Si no hay usuario, redirigir al login
+      window.location.href = "login.html";
+    }
+
+    // Lista de películas
+    const peliculas = [
+      { 
+        titulo: "Las guerreras K-pop", 
+        imagen: "https://static.cinepolis.com/img/peliculas/51497/1/1/51497.jpg",
+        link: "https://verpeliculasultra.com/accion/5046-las-guerreras-k-pop.html"
+      },
+      { 
+        titulo: "Super Mario Bros. La película", 
+        imagen: "https://www.ecartelera.com/carteles/13500/13593/008_p.webp",
+        link: "https://www25.pelisplushd.to/pelicula/super-mario-bros-la-pelicula"
+      },
+      { 
+        titulo: "Deadpool", 
+        imagen: "https://jorgelcastanos.blog/wp-content/uploads/2016/03/00e593607694b56314a6e9bd6095986d.jpg",
+        link: "https://www25.pelisplushd.to/pelicula/deadpool"
+      },
+      { 
+        titulo: "Avengers: Endgame", 
+        imagen: "https://www.commonsensemedia.org/sites/default/files/styles/ratio_2_3_large/public/product-images/csm-movie/avengers-endgame-movie-poster-image0.jpeg",
+        link: "https://ww3.gnulahd.nu/vengadores-endgame-op-2/"
+      },
+      { 
+        titulo: "The Matrix", 
+        imagen: "https://m.media-amazon.com/images/I/51EG732BV3L.jpg",
+        link: "https://www25.pelisplushd.to/pelicula/matrix"
+      },
+      { 
+        titulo: "Gladiador", 
+        imagen: "https://images.justwatch.com/poster/319983035/s166/gladiator.avif",
+        link: "https://www25.pelisplushd.to/pelicula/gladiador"
+      }
+    ];
+
+    const contenedor = document.getElementById("movies-container");
+
+    peliculas.forEach(pelicula => {
+      const link = document.createElement("a");
+      link.href = pelicula.link;
+      link.target = "_blank"; // abre en nueva pestaña
+      link.style.textDecoration = "none";
+      link.style.color = "inherit";
+
+      const card = document.createElement("div");
+      card.classList.add("movie-card");
+
+      card.innerHTML = `
+        <img src="${pelicula.imagen}" alt="${pelicula.titulo}">
+        <h3>${pelicula.titulo}</h3>
+      `;
+
+      link.appendChild(card);
+      contenedor.appendChild(link);
+    });
+  </script>
+
+</body>
+</html>

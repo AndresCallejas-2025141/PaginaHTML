@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====================
+   Body centrado
+==================== */
+body {
+    background-color: #000; /* fondo negro */
+    color: #fff; /* texto blanco */
+    min-height: 100vh;
+
+    /* 🔥 CENTRADO DEL LOGIN */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* permite secciones en columna */
+}
+
+/* ====================
+   GIF de gatos
+==================== */
+.cat-gif {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+}
+
+.cat-gif img {
+    width: 120px;
+    border-radius: 10px;
+}
+
+/* --------------------
+   Encabezado y navegación
+-------------------- */
+header {
+    background-color: #111;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header h1 {
+    color: #e50914;
+    font-size: 1.5rem;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #e50914;
+}
+
+/* --------------------
+   Sección hero
+-------------------- */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #e50914;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+}
+
+/* --------------------
+   Sección de películas
+-------------------- */
+.movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.movie-card {
+    background-color: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-card h3 {
+    margin: 15px;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* --------------------
+   Footer
+-------------------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    font-size: 0.85rem;
+    color: #aaa;
+    width: 100%;
+}
+
+/* --------------------
+   Login (CENTRADO)
+-------------------- */
+.login-container {
+    background-color: #111;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    text-align: center;
+
+    /* sombra elegante */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.login-container h1 {
+    font-weight: 600;
+    color: #e50914;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    color: #ccc;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.input-group input::placeholder {
+    color: #777;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #e50914;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #f40612;
+}
+
+.extra-links {
+    margin-top: 20px;
+    font-size: 0.85rem;
+}
+
+.extra-links a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+    color: #e50914;
+}
+
+.footer {
+    margin-top: 25px;
+    font-size: 0.75rem;
+    color: #777;
+}
