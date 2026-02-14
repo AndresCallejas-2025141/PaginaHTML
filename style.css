@@ -223,3 +223,125 @@ footer {
     font-size: 0.75rem;
     color: #777;
 }
+body.cuenta-page {
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: block; /* quita el centrado del login */
+}
+/* ====================
+   Layout Cartelera con posters laterales
+==================== */
+
+.cartelera-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    padding: 30px;
+}
+
+.posters-lado {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.posters-lado img {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.posters-lado img:hover {
+    transform: scale(1.05);
+}
+
+.cartelera-centro {
+    background-color: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 12px;
+    min-width: 300px;
+}
+
+.cartelera-centro ul {
+    list-style: none;
+    text-align: center;
+}
+
+.cartelera-centro li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+/* ====================
+   Fondo de Cartelera
+==================== */
+body.cartelera-page {
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("https://wallpapers.com/images/featured/pelicula-9pvmdtvz4cb0xl37.webp");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white; /* texto en blanco */
+}
+/* ====================
+   Fondo Estrenos
+==================== */
+body.estrenos-page {
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("https://cdn.bhdw.net/im/city-night-art-wallpaper-81152_w635.webp");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+/* Layout de estrenos con posters laterales */
+.estrenos-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    padding: 30px;
+}
+
+.estrenos-lado {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.estrenos-lado img {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.estrenos-lado img:hover {
+    transform: scale(1.05);
+}
+
+.estrenos-centro {
+    background-color: rgba(0,0,0,0.7);
+    padding: 30px;
+    border-radius: 12px;
+    min-width: 300px;
+}
+
+.estrenos-centro ul {
+    list-style: none;
+    text-align: center;
+}
+
+.estrenos-centro li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
