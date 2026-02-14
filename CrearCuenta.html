@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CineLogin - Crear Cuenta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="login-container">
+  <h1>Crear Cuenta</h1>
+  <p>Regístrate para empezar a disfrutar de tus películas favoritas 🎬</p>
+
+  <div class="input-group">
+    <label for="usuario">Nombre de Usuario</label>
+    <input type="text" id="usuario" placeholder="Ingresa tu usuario">
+  </div>
+
+  <div class="input-group">
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" placeholder="Ingresa tu contraseña">
+  </div>
+
+  <button class="login-btn" id="crearCuentaBtn">Crear Cuenta</button>
+
+  <div class="extra-links">
+    <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+  </div>
+</section>
+
+<script>
+  const crearBtn = document.getElementById("crearCuentaBtn");
+
+  crearBtn.addEventListener("click", function() {
+    const usuario = document.getElementById("usuario").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if(!usuario || !password){
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
+    // Obtener el array de usuarios existentes, o crear uno nuevo
+    let usuariosRegistrados = JSON.parse(sessionStorage.getItem("usuariosRegistrados")) || [];
+
+    // Verificar si el usuario ya existe
+    const existe = usuariosRegistrados.some(u => u.usuario === usuario);
+    if(existe){
+      alert("Este usuario ya existe. Elige otro 😿");
+      return;
+    }
+
+    // Agregar nueva cuenta
+    usuariosRegistrados.push({usuario: usuario, password: password});
+    sessionStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
+
+    alert("Cuenta creada correctamente 🎉");
+    window.location.href = "login.html";
+  });
+</script>
+
+</body>
+</html>
