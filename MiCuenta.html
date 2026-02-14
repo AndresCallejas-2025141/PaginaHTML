@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+
+<body class="cuenta-page">
 
 <header>
   <h1>CineLogin</h1>
@@ -22,9 +23,10 @@
   <h2>Mi Cuenta 👤</h2>
 </section>
 
-<section class="content">
-  <p id="usuarioNombre"></p>
-  <button onclick="cerrarSesion()">Cerrar sesión</button>
+<section class="content" style="text-align:center; padding:40px;">
+  <h3>Cuenta activa</h3>
+  <p id="usuarioNombre" style="margin:20px 0; font-size:1.2rem;"></p>
+  <button id="btnCerrar" class="login-btn">Cerrar sesión</button>
 </section>
 
 <footer>
@@ -34,17 +36,18 @@
 <script>
   const usuario = sessionStorage.getItem("usuario");
   const nombre = document.getElementById("usuarioNombre");
+  const boton = document.getElementById("btnCerrar");
 
-  if (usuario) {
-    nombre.textContent = "Usuario activo: " + usuario;
-  } else {
+  if (!usuario) {
     window.location.href = "login.html";
+  } else {
+    nombre.textContent = usuario;
   }
 
-  function cerrarSesion() {
+  boton.addEventListener("click", function() {
     sessionStorage.removeItem("usuario");
     window.location.href = "login.html";
-  }
+  });
 </script>
 
 </body>
