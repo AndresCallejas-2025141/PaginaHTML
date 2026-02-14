@@ -5,63 +5,73 @@
     <title>CineLogin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- GIF de gatos -->
-    <div class="cat-gif">
-        <img src="https://media1.tenor.com/m/RiZpodi6JD0AAAAd/fast-cat-cat-excited.gif" alt="Gatos divertidos">
-    </div>
+<div class="cat-gif">
+    <img src="https://media1.tenor.com/m/RiZpodi6JD0AAAAd/fast-cat-cat-excited.gif" alt="Gatos divertidos">
+</div>
 
-    <!-- Contenedor Login -->
-    <div class="login-container">
-        <h1>CineLogin</h1>
-        <p>Inicia sesión y descubre tus películas favoritas</p>
+<div class="login-container">
+    <h1>CineLogin</h1>
+    <p>Inicia sesión y descubre tus películas favoritas</p>
 
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="email">Usuario</label>
-                <input type="text" id="email" placeholder="usuario" required>
-            </div>
-
-            <div class="input-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
-
-            <button type="submit" class="login-btn">Entrar</button>
-        </form>
-
-        <div class="extra-links">
-            <p><a href="#">¿Olvidaste tu contraseña?</a></p>
-            <p><a href="#">Crear una cuenta</a></p>
+    <form id="loginForm">
+        <div class="input-group">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" placeholder="usuario" required>
         </div>
-    </div>
 
-    <!-- JS -->
-   <script>
+        <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="login-btn">Entrar</button>
+    </form>
+
+    <div class="extra-links">
+        <p><a href="CrearCuenta.html">Crear una cuenta</a></p>
+    </div>
+</div>
+
+<script>
+    // Inicializar cuenta por defecto si no hay cuentas registradas
+    let usuariosRegistrados = JSON.parse(sessionStorage.getItem("usuariosRegistrados")) || [];
+
+    // Verificar si ya existe la cuenta de Andres
+    const existeAndres = usuariosRegistrados.some(u => u.usuario === "Andres");
+    if(!existeAndres){
+        usuariosRegistrados.push({usuario: "Andres", password: "123"});
+        sessionStorage.setItem("usuariosRegistrados", JSON.stringify(usuariosRegistrados));
+    }
+
     const form = document.getElementById('loginForm');
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        const username = document.getElementById('email').value.trim();
+        const username = document.getElementById('usuario').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        if (username === "andres" && password === "123") {
-            alert("¡Bienvenido a CineLogin, Andrés! 🎬😺");
+        // Obtener cuentas registradas actualizadas
+        const usuariosRegistrados = JSON.parse(sessionStorage.getItem("usuariosRegistrados")) || [];
 
-            // Guardar el nombre de usuario en sessionStorage
-            sessionStorage.setItem('usuario', username);
+        if(usuariosRegistrados.length === 0){
+            alert("No hay ninguna cuenta registrada. Crea una cuenta primero 😿");
+            window.location.href = "CrearCuenta.html";
+            return;
+        }
 
-            // Redirigir a principal.html
+        // Buscar coincidencia
+        const cuentaValida = usuariosRegistrados.find(u => u.usuario === username && u.password === password);
+
+        if(cuentaValida){
+            alert(`¡Bienvenido a CineLogin, ${username}! 🎬😺`);
+            sessionStorage.setItem('usuario', username); // usuario activo
             window.location.href = "principal.html";
-
         } else {
             alert("Usuario o contraseña incorrectos. Intenta nuevamente 😿");
         }
